@@ -45,7 +45,7 @@ It predicts whether a student may pass based on structured student-related data.
 - Basic machine learning workflow
 
 **Repository:**  
-`student_pass_project`
+[student_pass_project](https://github.com/choicezyc-zym/student_pass_project)
 
 ---
 
@@ -66,7 +66,7 @@ This project uses a Convolutional Neural Network to classify handwritten digits 
 - Model evaluation on image data
 
 **Repository:**  
-`mnist_cnn_project`
+[mnist_cnn_project](https://github.com/choicezyc-zym/mnist_cnn_project)
 
 ---
 
@@ -98,7 +98,7 @@ Retrieve relevant context first, then generate an answer based on that context.
 ```
 
 **Repository:**  
-`mini-rag-project`
+[mini-rag-project](https://github.com/choicezyc-zym/mini-rag-project)
 
 ---
 
@@ -134,7 +134,7 @@ LLM plans, Python executes.
 ```
 
 **Repository:**  
-`mini-agent-project`
+[mini-agent-project](https://github.com/choicezyc-zym/mini-agent-project)
 
 ---
 
