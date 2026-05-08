@@ -138,77 +138,11 @@ LLM plans, Python executes.
 
 ---
 
-## Technical Summary
 
-Through these projects, I practiced:
 
-- Traditional machine learning workflow
-- Deep learning model training with PyTorch
-- Semantic embedding and vector retrieval
-- Retrieval-Augmented Generation
-- Local LLM integration with Ollama
-- Prompt construction
-- Source citation
-- JSONL logging
-- AI Agent tool calling
-- Project structuring and GitHub documentation
-
----
-
-## Overall Reflection
-
-These projects helped me understand the difference between different types of AI systems.
-
-A traditional machine learning model learns patterns from structured data.
-
-A CNN model learns visual features from image data.
-
-A RAG system retrieves external knowledge before generating an answer.
-
-An AI Agent can choose tools and execute tasks instead of only generating text.
-
-The most important lesson is that modern AI applications are not just about calling a large language model. They usually combine models, data, retrieval, tools, and engineering workflows.
-
----
-
-## 中文项目总结
-
-这个仓库记录了我的 AI 学习项目路线。
-
-目前我完成了四个主要项目：
-
-### 1. student_pass_project
-
-这是一个传统机器学习项目，用于理解数据预处理、特征处理、模型训练和分类预测流程。
-
-### 2. mnist_cnn_project
-
-这是一个 PyTorch CNN 图像分类项目，用于理解深度学习训练流程、卷积神经网络结构和图像分类任务。
-
-### 3. mini_rag_project
-
-这是一个本地 RAG 问答系统。
-
-它基于本地 `knowledge.txt` 知识库进行语义检索，再调用本地 Qwen2.5 模型生成答案。
-
-主要功能包括：
-
-- 文本切块
-- embedding 向量化
-- cosine similarity 检索
-- 动态相似度过滤
-- 本地 LLM 生成答案
-- 来源引用
-- 多轮命令行问答
-- JSONL 问答历史记录
-
-核心思想是：
-
-```text
-先检索相关资料，再让大语言模型基于资料生成答案。
-```
 
 ### 4. mini_agent_project
+
 
 这是一个本地 AI Agent 项目。
 
@@ -231,7 +165,33 @@ LLM 负责规划，Python 负责执行。
 ```
 
 ---
+### 5. RAG Agent Project
 
+**Type:** RAG + AI Agent  
+**Tech Stack:** Python, Sentence Transformers, Ollama, Qwen2.5, JSON Tool Calling
+
+This project combines a local RAG system with an AI Agent.
+
+It wraps the RAG pipeline as a callable `rag_tool`, allowing the Agent to decide whether to use calculator, file reader, RAG, or general LLM response based on the user task.
+
+**Main Features:**
+
+- Local knowledge base
+- Semantic retrieval with Sentence Transformers
+- Cosine similarity chunk retrieval
+- RAG tool wrapping
+- JSON-based tool call planning
+- Python tool execution
+- Calculator tool
+- File reader tool
+- General LLM response
+- Agent execution history logging
+
+**Core Idea:**
+
+```text
+RAG is a knowledge tool.
+Agent is the controller.
 ## Learning Roadmap
 
 整体学习路线是：
@@ -260,6 +220,7 @@ AI Agent
 | mnist_cnn_project | Deep Learning / CNN | Python, PyTorch, MNIST |
 | mini_rag_project | RAG | Python, Sentence Transformers, Ollama, Qwen2.5 |
 | mini_agent_project | AI Agent | Python, Ollama, Qwen2.5, JSON tool calling |
+| rag-agent-project | RAG + AI Agent | Python, Sentence Transformers, Ollama, Qwen2.5, JSON tool calling |
 
 ---
 
