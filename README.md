@@ -218,7 +218,7 @@ Through these projects, I practiced:
 | 2 | [mnist_cnn_project](https://github.com/choicezyc-zym/mnist_cnn_project) | Deep Learning / CNN | Built a PyTorch CNN image classification project on MNIST, including dataset loading, model definition, training loop, evaluation, and prediction. |
 | 3 | [mini-rag-project](https://github.com/choicezyc-zym/mini-rag-project) | Retrieval-Augmented Generation | Built a local RAG question-answering system using Sentence Transformers, cosine similarity retrieval, Ollama, and Qwen2.5. |
 | 4 | [mini-agent-project](https://github.com/choicezyc-zym/mini-agent-project) | AI Agent / Tool Calling | Built a local AI Agent system that uses Qwen2.5 to generate JSON tool call plans and Python to execute calculator and file reader tools. |
-| 5 | [rag-agent-project](https://github.com/choicezyc-zym/rag-agent-project) | RAG + Multi-step AI Agent | Built a local RAG Agent system with JSON tool calling, RAG as a callable tool, and a basic multi-step Agent loop using history, max_steps, and final answer generation. |
+| 5 | [rag-agent-project](https://github.com/choicezyc-zym/rag-agent-project) | RAG + Multi-step AI Agent Web App | Built a local Personal AI Knowledge Assistant with Streamlit, RAG, JSON tool calling, multi-step Agent loop, history tracking, and web-based execution step display. |
 
 ---
 
@@ -377,7 +377,7 @@ Retrieval-Augmented Generation
 ↓
 AI Agent Tool Calling
 ↓
-RAG + Multi-step AI Agent
+RAG + Multi-step AI Agent Web App
 ```
 
 这条路线帮助我逐步理解现代 AI 应用的构建方式：
