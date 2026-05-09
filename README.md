@@ -2,7 +2,7 @@
 
 This repository summarizes my AI learning journey and project portfolio.
 
-The projects cover traditional machine learning, deep learning, Retrieval-Augmented Generation, AI Agent tool calling, and a combined RAG + Agent system.
+The projects cover traditional machine learning, deep learning, Retrieval-Augmented Generation, AI Agent tool calling, and a combined RAG + Multi-step AI Agent system.
 
 ---
 
@@ -17,12 +17,12 @@ Deep Learning
         ↓
 Retrieval-Augmented Generation
         ↓
-AI Agent
+AI Agent Tool Calling
         ↓
-RAG + AI Agent
+RAG + Multi-step AI Agent
 ```
 
-The goal is to gradually understand how modern AI systems are built, from basic prediction models to local LLM-based applications.
+The goal is to gradually understand how modern AI systems are built, from basic prediction models to local LLM-based applications and multi-step Agent workflows.
 
 ---
 
@@ -142,12 +142,14 @@ LLM plans, Python executes.
 
 ### 5. RAG Agent Project
 
-**Type:** RAG + AI Agent  
+**Type:** RAG + Multi-step AI Agent  
 **Tech Stack:** Python, Sentence Transformers, scikit-learn, Ollama, Qwen2.5, JSON Tool Calling
 
 This project combines a local Retrieval-Augmented Generation system with an AI Agent.
 
 The RAG pipeline is wrapped as a callable `rag_tool`, allowing the Agent to decide whether to use a calculator, read a local file, call the RAG tool, or use a general LLM response.
+
+The project was later upgraded from a single-step Agent into a basic multi-step Agent. The multi-step version stores each tool result into `history`, lets the LLM decide the next step based on previous results, and stops when the model outputs `final`.
 
 **Main Features:**
 
@@ -164,12 +166,17 @@ The RAG pipeline is wrapped as a callable `rag_tool`, allowing the Agent to deci
 - General LLM response
 - Agent execution history logging
 - Lazy loading for the embedding model and RAG index
+- Basic multi-step Agent loop
+- History tracking for previous tool results
+- `max_steps` limit to prevent infinite loops
+- `final` stop signal for final answer generation
 
 **Core Idea:**
 
 ```text
 RAG is a knowledge tool.
 Agent is the controller.
+LLM plans, Python executes, history stores observations, and final stops the loop.
 ```
 
 **Repository:**  
@@ -195,19 +202,23 @@ Through these projects, I practiced:
 - Python tool execution
 - RAG tool wrapping
 - Lazy loading optimization
+- Multi-step Agent loop design
+- History tracking for Agent execution
+- `max_steps` loop control
+- `final` stop signal design
 - Project structuring and GitHub documentation
 
 ---
 
-## Project List
+## Project Overview
 
-| Project | Type | Main Technologies |
-|---|---|---|
-| student_pass_project | Traditional Machine Learning | Python, pandas, scikit-learn |
-| mnist_cnn_project | Deep Learning / CNN | Python, PyTorch, MNIST |
-| mini-rag-project | RAG | Python, Sentence Transformers, Ollama, Qwen2.5 |
-| mini-agent-project | AI Agent | Python, Ollama, Qwen2.5, JSON tool calling |
-| rag-agent-project | RAG + AI Agent | Python, Sentence Transformers, Ollama, Qwen2.5, JSON tool calling |
+| No. | Project | Topic | Description |
+|---|---|---|---|
+| 1 | [student_pass_project](https://github.com/choicezyc-zym/student_pass_project) | Traditional Machine Learning | Built a machine learning classification project using Python and scikit-learn, including data preprocessing, model training, prediction, and evaluation. |
+| 2 | [mnist_cnn_project](https://github.com/choicezyc-zym/mnist_cnn_project) | Deep Learning / CNN | Built a PyTorch CNN image classification project on MNIST, including dataset loading, model definition, training loop, evaluation, and prediction. |
+| 3 | [mini-rag-project](https://github.com/choicezyc-zym/mini-rag-project) | Retrieval-Augmented Generation | Built a local RAG question-answering system using Sentence Transformers, cosine similarity retrieval, Ollama, and Qwen2.5. |
+| 4 | [mini-agent-project](https://github.com/choicezyc-zym/mini-agent-project) | AI Agent / Tool Calling | Built a local AI Agent system that uses Qwen2.5 to generate JSON tool call plans and Python to execute calculator and file reader tools. |
+| 5 | [rag-agent-project](https://github.com/choicezyc-zym/rag-agent-project) | RAG + Multi-step AI Agent | Built a local RAG Agent system with JSON tool calling, RAG as a callable tool, and a basic multi-step Agent loop using history, max_steps, and final answer generation. |
 
 ---
 
@@ -224,6 +235,8 @@ A RAG system retrieves external knowledge before generating an answer.
 An AI Agent can choose tools and execute tasks instead of only generating text.
 
 A RAG Agent combines retrieval, tool calling, local LLM generation, and Python execution into one system.
+
+A multi-step Agent can store tool results in history and use previous observations to decide the next step.
 
 The most important lesson is that modern AI applications are not just about calling a large language model. They usually combine models, data, retrieval, tools, logging, and engineering workflows.
 
@@ -319,9 +332,11 @@ LLM 负责规划，Python 负责执行。
 
 ### 5. rag-agent-project
 
-这是一个本地 RAG + AI Agent 结合项目。
+这是一个本地 RAG + Multi-step AI Agent 结合项目。
 
 它把 RAG 系统封装成 `rag_tool`，让 Agent 可以根据用户任务自动选择不同工具，包括计算器、文件读取、RAG 知识库问答和普通 LLM 回答。
+
+项目后来从 single-step Agent 升级成 basic multi-step Agent。升级后，每一步工具执行结果都会保存到 `history`，LLM 会根据 history 判断下一步该做什么，直到输出 `final`。
 
 主要功能包括：
 
@@ -337,34 +352,37 @@ LLM 负责规划，Python 负责执行。
 - 普通 LLM 问答
 - embedding 模型和索引懒加载
 - agent_history.jsonl 执行历史记录
+- multi-step Agent 循环
+- history 中间结果记录
+- max_steps 防止无限循环
+- final 停止信号和最终回答生成
 
 核心思想是：
 
 ```text
 RAG 是知识工具，Agent 是调度器。
+LLM 负责计划，Python 负责执行，history 保存观察结果，final 作为停止信号。
 ```
 
 ---
 
 ## Learning Roadmap
 
-整体学习路线是：
-
 ```text
-传统机器学习
-    ↓
-深度学习
-    ↓
-RAG
-    ↓
-AI Agent
-    ↓
-RAG + AI Agent
+Traditional Machine Learning
+↓
+Deep Learning
+↓
+Retrieval-Augmented Generation
+↓
+AI Agent Tool Calling
+↓
+RAG + Multi-step AI Agent
 ```
 
 这条路线帮助我逐步理解现代 AI 应用的构建方式：
 
-从基础预测模型，到神经网络，再到基于知识库的问答系统，然后到能够调用工具执行任务的 Agent 系统，最后把 RAG 和 Agent 结合，构建一个可以调用知识库工具的本地 AI 系统。
+从基础预测模型，到神经网络，再到基于知识库的问答系统，然后到能够调用工具执行任务的 Agent 系统，最后把 RAG 和 Agent 结合，构建一个可以调用知识库工具并支持基础多步执行的本地 AI 系统。
 
 ---
 
@@ -372,6 +390,6 @@ RAG + AI Agent
 
 This portfolio shows my step-by-step AI learning path.
 
-I started from basic machine learning, then learned deep learning with CNNs, then built a local RAG system, then built a minimal AI Agent system, and finally combined RAG with Agent tool calling.
+I started from basic machine learning, then learned deep learning with CNNs, then built a local RAG system, then built a minimal AI Agent system, and finally combined RAG with multi-step Agent tool calling.
 
-The main thing I learned is that AI applications are not only about models. A real AI system usually needs data processing, model inference, retrieval, tools, logging, and clear project structure.
+The main thing I learned is that AI applications are not only about models. A real AI system usually needs data processing, model inference, retrieval, tools, logging, history tracking, and clear project structure.
